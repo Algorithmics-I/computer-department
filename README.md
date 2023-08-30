@@ -45,3 +45,41 @@ it is not.
 - Java code that solves the problem.
 
 - Document or readme of the analysis.
+
+## Analysis
+  The implementation's objective is to find and list duplicate files in a given directory, based
+  on generating MD5 hashes for file comparison. Below is a worst-case analysis and an evaluation
+  of the data structures used:
+# Worst-Case Analysis:
+
+  Scenario: Consider a directory with a large number of files and subdirectories, with most of the 
+  files being identical.
+  In this case, the worst situation would be that all files are duplicates.
+  The algorithm would have to iterate through all files and generate their MD5 hashes, resulting 
+  in a considerable runtime as generating MD5 hashes is a computationally expensive operation.
+# Used Data Structures:
+  Map<String, List<String>> fileMap: This map stores an MD5 hash as the key and a list of file paths
+  as the value. It's used to track duplicate files. If the same hash is encountered in the map, it
+  means at least two files have the same content.
+  Set<String> uniqueFiles: This set stores unique file paths, i.e., files with no duplicates.
+  It's used to count the number of unique files.
+  Set<String> duplicatedFiles: This set stores paths of duplicate files. If a file has the same hash
+  as another, both are added to this set.
+# Time complexity 
+  the worst case is O(n * m)
+  n = N files
+  m = average size in bytes
+# Data Structures Evaluation:
+
+  Map<String, List<String>> fileMap:
+
+  Pros: Allows for fast search for duplicates based on MD5 hash. Efficient for grouping duplicate files by content.
+  Cons: Can consume more memory, especially in situations where there are many unique files with different contents.
+  Set<String> uniqueFiles:
+
+  Pros: Efficient for maintaining a list of unique files. Quick lookup and duplicate verification.
+  Cons: Doesn't store information about actual duplicates, only paths of unique files.
+  Set<String> duplicatedFiles:
+
+  Pros: Efficient for storing paths of duplicate files. Facilitates enumeration and result presentation.
+  Cons: Similar to uniqueFiles, doesn't store information about the relationship between duplicates.
