@@ -6,11 +6,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class DuplicateFileFinder {
-    public void processData() {
+    public void processData(String path, String termination) {
         Scanner scanner = new Scanner(System.in);
-
-        String path = scanner.nextLine();
-        String termination = scanner.nextLine();
 
         FileScanner fileScanner = new FileScanner(path);
         File[] files = fileScanner.scanFiles(termination);

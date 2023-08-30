@@ -11,7 +11,11 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) {
     DuplicateFileFinder duplicateFileFinder = new DuplicateFileFinder();
-    duplicateFileFinder.processData();
+    System.out.println("For txt files:");
+    duplicateFileFinder.processData("src/main/resources", ".txt");
+
+    System.out.println("For jpg files:");
+    duplicateFileFinder.processData("src/main/resources", ".jpg");
   }
 
 
